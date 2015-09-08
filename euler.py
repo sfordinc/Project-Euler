@@ -50,12 +50,23 @@ def prime_num(num):
 def max_palindrome(num_size):
     if num_size < 2:
         return 0
-    min_num = 1 * 10 ** (num_size - 1)
-    max_num = 0
-    for i in range(0, num_size):
-        max_num += 9 * 10 ** i
+    min_num = 10 ** (num_size - 1)
+    max_num = 10 ** num_size - 1
     i = max_num
+    j = max_num
+
     while i >= min_num:
+        while j >= min_num:
+            product = i * j
+            s_product = str(product)
+            l = len(s_product)
+            for k in range(1, l / 2 + 1):
+                if s_product[k - 1] != s_product[l - k]:
+                    break
+                else:
+                    if k == l / 2:
+                        palindrome = product
+                        return palindrome
+                k += 1
+            j -= 1
         i -= 1
-    palindrome = min_num * min_num
-    return palindrome
