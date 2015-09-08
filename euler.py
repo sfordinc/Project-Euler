@@ -45,3 +45,17 @@ def prime_num(num):
         else:
             i += 1
     return num
+
+
+def max_palindrome(num_size):
+    if num_size < 2:
+        return 0
+    min_num = 1 * 10 ** (num_size - 1)
+    max_num = 0
+    for i in range(0, num_size):
+        max_num += 9 * 10 ** i
+    i = max_num
+    while i >= min_num:
+        i -= 1
+    palindrome = min_num * min_num
+    return palindrome
