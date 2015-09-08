@@ -5,6 +5,6 @@
 math
 
 Пока решены 3 первые задачи:
-multiples_of_3_and_5
-sum_fibonacci_numbers
-max_prime_factor
+multiples_of_3_and_5;
+sum_fibonacci_numbers;
+max_prime_factor;
