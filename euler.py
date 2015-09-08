@@ -53,8 +53,9 @@ def max_palindrome(num_size):
     min_num = 10 ** (num_size - 1)
     max_num = 10 ** num_size
     palindrome = 0
-    for i in range(max_num, min_num, -1):
-        for j in range(max_num, min_num, -1):
+    ra = range(max_num, min_num, -1)
+    for i in ra:
+        for j in ra:
             product = i * j
             if product > palindrome:
                 s_product = str(product)
