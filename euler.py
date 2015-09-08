@@ -60,6 +60,26 @@ def max_palindrome(num_size):
         while j >= min_num:
             product = i * j
             s_product = str(product)
+            if s_product == s_product[::-1] and product > palindrome:
+                palindrome = product
+            j -= 1
+        i -= 1
+    return palindrome
+
+
+def max_palindrome_old(num_size):
+    if num_size < 2:
+        return 0
+    min_num = 10 ** (num_size - 1)
+    max_num = 10 ** num_size - 1
+
+    i = max_num
+    palindrome = 0
+    while i >= min_num:
+        j = max_num
+        while j >= min_num:
+            product = i * j
+            s_product = str(product)
             l = len(s_product)
             for k in range(1, l / 2 + 1):
                 # print k - 1, l - k, s_product, s_product[k - 1], s_product[l - k], i, j
