@@ -57,7 +57,8 @@ def max_palindrome(num_size):
         for j in range(max_num, min_num, -1):
             product = i * j
             s_product = str(product)
-            if s_product == s_product[::-1] and product > palindrome:
-                palindrome = product
+            if product > palindrome:
+                if s_product == s_product[::-1]:
+                    palindrome = product
     return palindrome
 
