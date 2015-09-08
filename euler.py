@@ -52,21 +52,24 @@ def max_palindrome(num_size):
         return 0
     min_num = 10 ** (num_size - 1)
     max_num = 10 ** num_size - 1
-    i = max_num
-    j = max_num
 
+    i = max_num
+    palindrome = 0
     while i >= min_num:
+        j = max_num
         while j >= min_num:
             product = i * j
             s_product = str(product)
             l = len(s_product)
             for k in range(1, l / 2 + 1):
+                # print k - 1, l - k, s_product, s_product[k - 1], s_product[l - k], i, j
                 if s_product[k - 1] != s_product[l - k]:
                     break
                 else:
                     if k == l / 2:
-                        palindrome = product
-                        return palindrome
+                        if product > palindrome:
+                            palindrome = product
                 k += 1
             j -= 1
         i -= 1
+    return palindrome

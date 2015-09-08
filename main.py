@@ -10,7 +10,7 @@ def main():
     # num = 600851475143
     # print euler.max_prime_factor(num)
 
-    num_size = 2
+    num_size = 3
     print euler.max_palindrome(num_size)
 
     print time.time() - start
