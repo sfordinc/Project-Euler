@@ -8,3 +8,4 @@ math, time
 multiples_of_3_and_5;
 sum_fibonacci_numbers;
 max_prime_factor;
+max_palindrome;
