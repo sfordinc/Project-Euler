@@ -1,2 +1,4 @@
-# Project_Euler_module
+# Project-Euler
 Модуль на python'е с решениями задач для Проекта Эйлера.
+Необходимые модули для работы:
+math
