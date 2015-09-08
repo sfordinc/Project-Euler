@@ -3,6 +3,7 @@ __author__ = 'sford'
 import euler
 import time
 
+
 def main():
     start = time.time()
 
