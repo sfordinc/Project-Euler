@@ -63,3 +63,19 @@ def max_palindrome(num_size):
                     palindrome = product
     return palindrome
 
+
+def evenly_divisible_min_num(num_count):
+    min_num = 1
+    b_found = False
+    i_num = range(num_count, 0, -1)
+    while not b_found:
+        for i in i_num:
+            # if not prime_num(i):
+            if not (min_num % i):
+                pass
+            else:
+                min_num += 1
+                break
+        else:
+            b_found = True
+    return min_num
