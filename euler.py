@@ -66,13 +66,18 @@ def max_palindrome(num_size):
 
 def evenly_divisible_min_num(num_count):
     min_num = 1
-    b_found = False
     i_num = range(num_count, 1, -1)
+    for ii in i_num:
+        if prime_num(ii):
+            min_num *= ii
+    b_found = False
+    i_step = ii
     while not b_found:
         for i in i_num:
             if min_num % i:
-                min_num += 1
+                min_num += i_step
                 break
         else:
             b_found = True
     return min_num
+
