@@ -11,3 +11,4 @@ max_prime_factor;
 max_palindrome;
 evenly_divisible_min_num;
 sum_square_difference;
+prime_num;

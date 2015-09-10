@@ -38,13 +38,13 @@ def max_prime_factor(num):
     i = int(sqrt(num))  # Делитель не может быть больше квадратого корня заданного числа
     while i >= 1:
         if not (num % i):
-            if prime_num(i):
+            if is_prime_num(i):
                 return i
         i -= 1
     return 0
 
 
-def prime_num(num):
+def is_prime_num(num):
     # Проверяет на простое число
     i = 2
     while i < num:
@@ -80,7 +80,7 @@ def evenly_divisible_min_num(num_count):
     min_num = 2                                         # Число должно быть кратно двум
     i_num = range(num_count, int(num_count / 2), -1)    # И поэтому можно перебирать только пол диапазона
     for ii in i_num:                                    # Подсчитаем возможное минимальное число
-        if prime_num(ii):
+        if is_prime_num(ii):
             min_num *= ii
     b_found = False
     while not b_found:                                  # Ищем то самое число
@@ -105,3 +105,16 @@ def sum_square_difference(num_count):
         num_square_sum += i_num * i_num
     sum_square_diff = num_sum_square * num_sum_square - num_square_sum
     return sum_square_diff
+
+
+def prime_num(num_idx):
+    # 7-я задача
+    # Находит №-е простое число
+    idx = 0
+    for i in range(2, num_idx*num_idx):
+        if is_prime_num(i):
+            idx += 1
+            if idx == num_idx:
+                num = i
+                break
+    return num
