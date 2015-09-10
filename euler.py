@@ -128,7 +128,6 @@ def max_series_product(s_product, num_count):
     in_s = s_product
     i = 0
     max_product = 0
-    # s_dict = {}
     zero_idx = in_s.find('0', i)
     while zero_idx:
         dict_elem = in_s[i:zero_idx:1]
@@ -137,9 +136,13 @@ def max_series_product(s_product, num_count):
             for ii in in_s[i:num_count:1]:
                 p_product *= int(ii)
             if p_product > max_product:
+                # print in_s[i:num_count:1]
                 max_product = p_product
             in_s = in_s[1:len(in_s):1]
         else:
             in_s = in_s[zero_idx + 1:len(in_s):1]
+        if in_s.find('0') == 1:
+            pass
+            #
         zero_idx = in_s.find('0', i)
     return max_product
