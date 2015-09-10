@@ -120,3 +120,26 @@ def prime_num(num_idx):
                 num = i
                 break
     return num
+
+
+def max_series_product(s_product, num_count):
+    # 8-я задача:
+    # Пока не находит наибольшее произведение определенного кол-ва последовательных цифр в заданном числе.
+    in_s = s_product
+    i = 0
+    max_product = 0
+    # s_dict = {}
+    zero_idx = in_s.find('0', i)
+    while zero_idx:
+        dict_elem = in_s[i:zero_idx:1]
+        if len(dict_elem) >= num_count:
+            p_product = 1
+            for ii in in_s[i:num_count:1]:
+                p_product *= int(ii)
+            if p_product > max_product:
+                max_product = p_product
+            in_s = in_s[1:len(in_s):1]
+        else:
+            in_s = in_s[zero_idx + 1:len(in_s):1]
+        zero_idx = in_s.find('0', i)
+    return max_product
