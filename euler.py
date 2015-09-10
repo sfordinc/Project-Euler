@@ -46,12 +46,13 @@ def max_prime_factor(num):
 
 def is_prime_num(num):
     # Проверяет на простое число
-    i = 2
-    while i < num:
+    i = 3
+    sqrt_num = sqrt(num) + 1
+    while i < sqrt_num:
         if not (num % i):
             return 0
         else:
-            i += 1
+            i += 2
     return num
 
 
@@ -111,10 +112,11 @@ def prime_num(num_idx):
     # 7-я задача:
     # Находит №-е простое число
     idx = 0
-    for i in range(2, num_idx*num_idx):
+    for i in range(1, num_idx*num_idx, 2):
         if is_prime_num(i):
             idx += 1
             if idx == num_idx:
                 num = i
                 break
     return num
+

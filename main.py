@@ -14,7 +14,7 @@ def main():
     for i in i_list:
         print euler.prime_num(i)
     """
-    num = 1000
+    num = 10001
     print euler.prime_num(num)
 
     print time.time() - start
