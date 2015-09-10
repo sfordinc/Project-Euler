@@ -124,25 +124,22 @@ def prime_num(num_idx):
 
 def max_series_product(s_product, num_count):
     # 8-я задача:
-    # Пока не находит наибольшее произведение определенного кол-ва последовательных цифр в заданном числе.
-    in_s = s_product
+    # Находит наибольшее произведение определенного кол-ва последовательных цифр в заданном числе.
     i = 0
-    max_product = 0
-    zero_idx = in_s.find('0', i)
-    while zero_idx:
-        dict_elem = in_s[i:zero_idx:1]
+    i_max_product = 0
+    zero_idx = s_product.find('0', i)
+    while zero_idx > 0:
+        dict_elem = s_product[i:zero_idx]
         if len(dict_elem) >= num_count:
             p_product = 1
-            for ii in in_s[i:num_count:1]:
+            for ii in s_product[i:num_count]:
                 p_product *= int(ii)
-            if p_product > max_product:
-                # print in_s[i:num_count:1]
-                max_product = p_product
-            in_s = in_s[1:len(in_s):1]
+            if p_product > i_max_product:
+                i_max_product = p_product
+            s_product = s_product[1:len(s_product)]
         else:
-            in_s = in_s[zero_idx + 1:len(in_s):1]
-        if in_s.find('0') == 1:
-            pass
-            #
-        zero_idx = in_s.find('0', i)
-    return max_product
+            s_product = s_product[zero_idx + 1:len(s_product)]
+        while not s_product.find('0'):  # удаляем лидирующие нули
+            s_product = s_product[1:len(s_product)]
+        zero_idx = s_product.find('0', i)
+    return i_max_product

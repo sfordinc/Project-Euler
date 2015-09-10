@@ -4,7 +4,7 @@
 Необходимые модули для работы:
 math, time, gc
 
-Решено 7 первых задач:
+Решено 8 первых задач:
 multiples_of_3_and_5;
 sum_fibonacci_numbers;
 max_prime_factor;
@@ -12,3 +12,4 @@ max_palindrome;
 evenly_divisible_min_num;
 sum_square_difference;
 prime_num;
+max_series_product;
