@@ -8,8 +8,8 @@ import time
 def main():
     start = time.time()
 
-    max_num = 20
-    print euler.evenly_divisible_min_num(max_num)
+    num_count = 100
+    print euler.sum_square_difference(num_count)
 
     print time.time() - start
 

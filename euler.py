@@ -92,3 +92,16 @@ def evenly_divisible_min_num(num_count):
             b_found = True
     return min_num
 
+
+def sum_square_difference(num_count):
+    # 6-я задача
+    # Находит разность между суммой квадратов
+    # и квадратом суммы певых натуральных чисел заданного кол-ва.
+    r_num = range(1, num_count + 1)
+    num_square_sum = 0
+    num_sum_square = 0
+    for i_num in r_num:
+        num_sum_square += i_num
+        num_square_sum += i_num * i_num
+    sum_square_diff = num_sum_square * num_sum_square - num_square_sum
+    return sum_square_diff

@@ -4,9 +4,10 @@
 Необходимые модули для работы:
 math, time
 
-Пока решены 5 первых задач:
+Пока решены 6 первых задач:
 multiples_of_3_and_5;
 sum_fibonacci_numbers;
 max_prime_factor;
 max_palindrome;
 evenly_divisible_min_num;
+sum_square_difference;
