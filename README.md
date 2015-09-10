@@ -2,9 +2,9 @@
 Модуль на python'е с решениями задач для Проекта Эйлера.
 
 Необходимые модули для работы:
-math, time
+math, time, gc
 
-Пока решены 6 первых задач:
+Решено 7 первых задач:
 multiples_of_3_and_5;
 sum_fibonacci_numbers;
 max_prime_factor;

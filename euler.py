@@ -94,7 +94,7 @@ def evenly_divisible_min_num(num_count):
 
 
 def sum_square_difference(num_count):
-    # 6-я задача
+    # 6-я задача:
     # Находит разность между суммой квадратов
     # и квадратом суммы певых натуральных чисел заданного кол-ва.
     r_num = range(1, num_count + 1)
@@ -108,7 +108,7 @@ def sum_square_difference(num_count):
 
 
 def prime_num(num_idx):
-    # 7-я задача
+    # 7-я задача:
     # Находит №-е простое число
     idx = 0
     for i in range(2, num_idx*num_idx):
