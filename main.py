@@ -1,9 +1,10 @@
 # coding=utf-8
-__author__ = 'sford'
 
-import euler
-import time
 import gc
+import time
+import euler
+
+__author__ = 'sford'
 
 
 def main():
@@ -19,6 +20,7 @@ def main():
 
     print time.time() - start
     gc.collect()
+
 
 if __name__ == '__main__':
     main()

@@ -1,7 +1,8 @@
 # coding=utf-8
-__author__ = 'sford'
 
 from math import sqrt
+
+__author__ = 'sford'
 
 
 def multiples_of_3_and_5(num_count):
@@ -119,4 +120,3 @@ def prime_num(num_idx):
                 num = i
                 break
     return num
-
