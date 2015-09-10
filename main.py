@@ -8,7 +8,7 @@ import time
 def main():
     start = time.time()
 
-    max_num = 17
+    max_num = 20
     print euler.evenly_divisible_min_num(max_num)
 
     print time.time() - start
