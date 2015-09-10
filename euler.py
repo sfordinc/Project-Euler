@@ -130,16 +130,22 @@ def max_series_product(s_product, num_count):
     zero_idx = s_product.find('0', i)
     while zero_idx > 0:
         dict_elem = s_product[i:zero_idx]
-        if len(dict_elem) >= num_count:
-            p_product = 1
-            for ii in s_product[i:num_count]:
-                p_product *= int(ii)
-            if p_product > i_max_product:
+        if len(dict_elem) >= num_count:         # пропускаем элементы с кол-вом меньше заданного
+            p_product = production(s_product[i:num_count])
+            if p_product > i_max_product:       # если нашли элементы с бОльшим произведением
                 i_max_product = p_product
             s_product = s_product[1:len(s_product)]
         else:
             s_product = s_product[zero_idx + 1:len(s_product)]
-        while not s_product.find('0'):  # удаляем лидирующие нули
+        while not s_product.find('0'):          # удаляем лидирующие нули
             s_product = s_product[1:len(s_product)]
         zero_idx = s_product.find('0', i)
     return i_max_product
+
+
+def production(product_list):
+    # Считает произведение элементов списка
+    list_production = 1
+    for i in product_list:
+        list_production *= int(i)
+    return list_production
