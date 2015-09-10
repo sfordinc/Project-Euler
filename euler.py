@@ -143,7 +143,7 @@ def pythagorean_triplet(sum_num):
     # 8-я задача:
     # Находит произведение тройки Пифагора, для которой сумма равна заданному числу
     l_triplet = []
-    uni_triplet = range(3, 6, 1)    # 3, 4, 5
+    uni_triplet = range(3, 6)    # 3, 4, 5
     uni_triplet_sum = sum(uni_triplet)
     if not (sum_num % uni_triplet_sum):     # проверка на однородность
         k = int(sum_num / uni_triplet_sum)
