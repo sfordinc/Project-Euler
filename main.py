@@ -10,9 +10,8 @@ __author__ = 'sford'
 def main():
     gc.enable()
     start = time.time()
-
-    sum_num = 60
-    print euler.pythagorean_triplet(sum_num)
+    print euler.prime_num(10)
+    print euler.pythagorean_triplet(60)
 
     print time.time() - start
     gc.collect()

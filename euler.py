@@ -8,13 +8,9 @@ __author__ = 'sford'
 def multiples_of_3_and_5(num_count):
     # 1-я задача:
     # Находит сумму всех чисел меньше заданного числа, кратных 3 или 5.
-    i = 1
-    summ = 0
-    while i < num_count:
-        if (i % 3 == 0) or (i % 5 == 0):
-            summ += i
-        i += 1
-    return summ
+    num_list = range(num_count)
+    num_sum = sum([i for i in num_list if (i % 3 == 0) or (i % 5 == 0)])
+    return num_sum
 
 
 def sum_fibonacci_numbers(max_num):
@@ -79,19 +75,19 @@ def max_palindrome(num_size):
 def evenly_divisible_min_num(num_count):
     # 5-я задача:
     # Ищем самое маленькое число, которое делится без остатка на все числа заданного кол-ва
-    min_num = 2                                         # Число должно быть кратно двум
-    i_num = range(num_count, int(num_count / 2), -1)    # И поэтому можно перебирать только пол диапазона
-    for ii in i_num:                                    # Подсчитаем возможное минимальное число
-        if is_prime_num(ii):
-            min_num *= ii
+    num_list = range(num_count, int(num_count / 2), -1)    # Можно взять только пол диапазона
+    prime_num_list = [x for x in num_list if is_prime_num(x)]  # Только простые числа
+    min_num = reduce(lambda a, b: a * b, prime_num_list)    # Их произведение
+
     b_found = False
-    while not b_found:                                  # Ищем то самое число
-        for i in i_num:
+    while not b_found:          # Ищем то самое число
+        for i in num_list:
             if min_num % i:
-                min_num += 2                            # Шаг тоже может быть кратен двум
+                min_num += 2    # Шаг тоже может быть кратен двум
                 break
         else:
             b_found = True
+
     return min_num
 
 
@@ -99,7 +95,7 @@ def sum_square_difference(num_count):
     # 6-я задача:
     # Находит разность между суммой квадратов
     # и квадратом суммы певых натуральных чисел заданного кол-ва.
-    r_num = range(1, num_count + 1)
+    r_num = range(num_count + 1)
     num_square_sum = 0
     num_sum_square = 0
     for i_num in r_num:
@@ -113,7 +109,7 @@ def prime_num(num_idx):
     # 7-я задача:
     # Находит №-е простое число
     idx = 0
-    for i in range(1, num_idx*num_idx, 2):
+    for i in range(1, num_idx * num_idx, 2):
         if is_prime_num(i):
             idx += 1
             if idx == num_idx:
@@ -131,7 +127,7 @@ def max_series_product(s_product, num_count):
     while zero_idx > 0:
         dict_elem = s_product[i:zero_idx]
         if len(dict_elem) >= num_count:         # пропускаем элементы с кол-вом меньше заданного
-            p_product = list_production(s_product[i:num_count])
+            p_product = reduce(lambda a, b: int(a) * int(b), s_product[i:num_count])
             if p_product > i_max_product:       # если нашли элементы с бОльшим произведением
                 i_max_product = p_product
             s_product = s_product[1:len(s_product)]
@@ -143,32 +139,18 @@ def max_series_product(s_product, num_count):
     return i_max_product
 
 
-def list_production(product_list):
-    # Считает произведение элементов списка
-    i_production = 1
-    for i in product_list:
-        i_production *= int(i)
-    return i_production
-
-
 def pythagorean_triplet(sum_num):
     # 8-я задача:
     # Находит произведение тройки Пифагора, для которой сумма равна заданному числу
     l_triplet = []
-    uni_triplet = [3, 4, 5]
-    uni_triplet_sum = list_sum(uni_triplet)
+    uni_triplet = range(3, 6, 1)    # 3, 4, 5
+    uni_triplet_sum = sum(uni_triplet)
     if not (sum_num % uni_triplet_sum):     # проверка на однородность
         k = int(sum_num / uni_triplet_sum)
         l_triplet = [x * k for x in uni_triplet]
     else:
         pass
-    triplet_product = list_production(l_triplet)
+    triplet_product = reduce(lambda a, b: a * b, l_triplet)
     return triplet_product
 
 
-def list_sum(sum_list):
-    # Считает сумму элементов списка
-    i_sum = 0
-    for i in sum_list:
-        i_sum += int(i)
-    return i_sum
