@@ -131,7 +131,7 @@ def max_series_product(s_product, num_count):
     while zero_idx > 0:
         dict_elem = s_product[i:zero_idx]
         if len(dict_elem) >= num_count:         # пропускаем элементы с кол-вом меньше заданного
-            p_product = production(s_product[i:num_count])
+            p_product = list_production(s_product[i:num_count])
             if p_product > i_max_product:       # если нашли элементы с бОльшим произведением
                 i_max_product = p_product
             s_product = s_product[1:len(s_product)]
@@ -143,9 +143,32 @@ def max_series_product(s_product, num_count):
     return i_max_product
 
 
-def production(product_list):
+def list_production(product_list):
     # Считает произведение элементов списка
-    list_production = 1
+    i_production = 1
     for i in product_list:
-        list_production *= int(i)
-    return list_production
+        i_production *= int(i)
+    return i_production
+
+
+def pythagorean_triplet(sum_num):
+    # 8-я задача:
+    # Находит произведение тройки Пифагора, для которой сумма равна заданному числу
+    l_triplet = []
+    uni_triplet = [3, 4, 5]
+    uni_triplet_sum = list_sum(uni_triplet)
+    if not (sum_num % uni_triplet_sum):     # проверка на однородность
+        k = int(sum_num / uni_triplet_sum)
+        l_triplet = [x * k for x in uni_triplet]
+    else:
+        pass
+    triplet_product = list_production(l_triplet)
+    return triplet_product
+
+
+def list_sum(sum_list):
+    # Считает сумму элементов списка
+    i_sum = 0
+    for i in sum_list:
+        i_sum += int(i)
+    return i_sum
