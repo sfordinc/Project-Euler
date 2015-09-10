@@ -1,9 +1,12 @@
+# coding=utf-8
 __author__ = 'sford'
 
 from math import sqrt
 
 
 def multiples_of_3_and_5(num_count):
+    # 1-я задача:
+    # Находит сумму всех чисел меньше заданного числа, кратных 3 или 5.
     i = 1
     summ = 0
     while i < num_count:
@@ -14,6 +17,8 @@ def multiples_of_3_and_5(num_count):
 
 
 def sum_fibonacci_numbers(max_num):
+    # 2-я задача:
+    # Находит сумму всех четных элементов ряда Фибоначчи, которые не превышают заданного числа.
     summ = 0
     fib_num = 0
     fi = fib_num
@@ -28,7 +33,9 @@ def sum_fibonacci_numbers(max_num):
 
 
 def max_prime_factor(num):
-    i = int(sqrt(num))
+    # 3-я задача:
+    # Находит самый большой делитель заданного числа, являющийся простым числом
+    i = int(sqrt(num))  # Делитель не может быть больше квадратого корня заданного числа
     while i >= 1:
         if not (num % i):
             if prime_num(i):
@@ -38,6 +45,7 @@ def max_prime_factor(num):
 
 
 def prime_num(num):
+    # Проверяет на простое число
     i = 2
     while i < num:
         if not (num % i):
@@ -48,10 +56,12 @@ def prime_num(num):
 
 
 def max_palindrome(num_size):
-    if num_size < 2:
+    # 4-я задача:
+    # Находит самый большой палиндром, полученный умножением двух чисел заданного разряда.
+    if num_size < 2:    # Проверка на разрядность для однозначных чисел
         return 0
-    min_num = 10 ** (num_size - 1)
-    max_num = 10 ** num_size
+    min_num = 10 ** (num_size - 1)  # Наименьшее значение полиндрома
+    max_num = 10 ** num_size        # Наибольшее значение полиндрома
     palindrome = 0
     ra = range(max_num, min_num, -1)
     for i in ra:
@@ -59,23 +69,24 @@ def max_palindrome(num_size):
             product = i * j
             if product > palindrome:
                 s_product = str(product)
-                if s_product == s_product[::-1]:
+                if s_product == s_product[::-1]:    # Проверка на полиндромность
                     palindrome = product
     return palindrome
 
 
 def evenly_divisible_min_num(num_count):
-    min_num = 1
-    i_num = range(num_count, 1, -1)
-    for ii in i_num:
+    # 5-я задача:
+    # Ищем самое маленькое число, которое делится без остатка на все числа
+    min_num = 2                                         # Число должно быть кратно двум
+    i_num = range(num_count, int(num_count / 2), -1)    # И поэтому можно перебирать только пол диапазона
+    for ii in i_num:                                    # Подсчитаем возможное минимальное число
         if prime_num(ii):
             min_num *= ii
     b_found = False
-    i_step = ii
-    while not b_found:
+    while not b_found:                                  # Ищем то самое число
         for i in i_num:
             if min_num % i:
-                min_num += i_step
+                min_num += 2                            # Шаг тоже может быть кратен двум
                 break
         else:
             b_found = True
