@@ -10,7 +10,7 @@ __author__ = 'sford'
 def main():
     gc.enable()
     start = time.time()
-    print euler.is_prime_num(104743)
+    print euler.max_prime_factor_new(13195)
 
     print time.time() - start
     gc.collect()

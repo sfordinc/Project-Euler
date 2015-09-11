@@ -9,35 +9,35 @@ def multiples_of_3_and_5(num_count):
     # 1-я задача:
     # Находит сумму всех чисел меньше заданного числа, кратных 3 или 5.
     num_list = range(num_count)
-    num_sum = sum([i for i in num_list if (i % 3 == 0) or (i % 5 == 0)])
+    num_sum = sum([num for num in num_list if (num % 3 == 0) or (num % 5 == 0)])
     return num_sum
 
 
 def sum_fibonacci_numbers(max_num):
     # 2-я задача:
     # Находит сумму всех четных элементов ряда Фибоначчи, которые не превышают заданного числа.
-    summ = 0
+    fib_num_sum = 0
     fib_num = 0
-    fi = fib_num
-    si = 1
+    first_num = fib_num
+    second_num = 1
     while fib_num <= max_num:
-        fib_num = fi + si
-        fi = si
-        si = fib_num
+        fib_num = first_num + second_num
+        first_num = second_num
+        second_num = fib_num
         if not (fib_num % 2):
-            summ += fib_num
-    return summ
+            fib_num_sum += fib_num
+    return fib_num_sum
 
 
 def max_prime_factor(num):
     # 3-я задача:
     # Находит самый большой делитель заданного числа, являющийся простым числом
-    i = int(sqrt(num))  # Делитель не может быть больше квадратого корня заданного числа
-    while i >= 1:
+    # Делитель не может быть больше квадратого корня заданного числа
+    num_list = range(int(sqrt(num)), 1, -1)
+    for i in num_list:
         if not (num % i):
             if is_prime_num(i):
                 return i
-        i -= 1
     return 0
 
 
