@@ -10,8 +10,7 @@ __author__ = 'sford'
 def main():
     gc.enable()
     start = time.time()
-    print euler.prime_num(10)
-    print euler.pythagorean_triplet(60)
+    print euler.is_prime_num(104743)
 
     print time.time() - start
     gc.collect()

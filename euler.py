@@ -43,13 +43,10 @@ def max_prime_factor(num):
 
 def is_prime_num(num):
     # Проверяет на простое число
-    i = 3
-    sqrt_num = sqrt(num) + 1
-    while i < sqrt_num:
+    num_list = range(3, int(sqrt(num)), 2)
+    for i in num_list:
         if not (num % i):
             return 0
-        else:
-            i += 2
     return num
 
 
@@ -61,9 +58,9 @@ def max_palindrome(num_size):
     min_num = 10 ** (num_size - 1)  # Наименьшее значение полиндрома
     max_num = 10 ** num_size        # Наибольшее значение полиндрома
     palindrome = 0
-    ra = range(max_num, min_num, -1)
-    for i in ra:
-        for j in ra:
+    num_list = range(max_num, min_num, -1)
+    for i in num_list:
+        for j in num_list:
             product = i * j
             if product > palindrome:
                 s_product = str(product)
@@ -95,12 +92,9 @@ def sum_square_difference(num_count):
     # 6-я задача:
     # Находит разность между суммой квадратов
     # и квадратом суммы певых натуральных чисел заданного кол-ва.
-    r_num = range(num_count + 1)
-    num_square_sum = 0
-    num_sum_square = 0
-    for i_num in r_num:
-        num_sum_square += i_num
-        num_square_sum += i_num * i_num
+    num_list = range(num_count + 1)
+    num_sum_square = sum([num for num in num_list])
+    num_square_sum = sum([num*num for num in num_list])
     sum_square_diff = num_sum_square * num_sum_square - num_square_sum
     return sum_square_diff
 
