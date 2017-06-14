@@ -42,8 +42,8 @@ def max_prime_factor(num):
 
 
 def is_prime_num(num):
-    # Проверяет на простое число
-    num_list = range(3, int(sqrt(num)), 2)
+    # Проверяет на простое число (>16 и нечетное)
+    num_list = range(3, int(sqrt(num)) + 1, 2)
     for i in num_list:
         if not (num % i):
             return 0
@@ -53,10 +53,10 @@ def is_prime_num(num):
 def max_palindrome(num_size):
     # 4-я задача:
     # Находит самый большой палиндром, полученный умножением двух чисел заданного разряда.
-    if num_size < 2:    # Проверка на разрядность для однозначных чисел
+    if num_size < 2:  # Проверка на разрядность для однозначных чисел
         return 0
     min_num = 10 ** (num_size - 1)  # Наименьшее значение полиндрома
-    max_num = 10 ** num_size        # Наибольшее значение полиндрома
+    max_num = 10 ** num_size  # Наибольшее значение полиндрома
     palindrome = 0
     num_list = range(max_num, min_num, -1)
     for i in num_list:
@@ -64,7 +64,7 @@ def max_palindrome(num_size):
             product = i * j
             if product > palindrome:
                 s_product = str(product)
-                if s_product == s_product[::-1]:    # Проверка на полиндромность
+                if s_product == s_product[::-1]:  # Проверка на полиндромность
                     palindrome = product
     return palindrome
 
@@ -72,15 +72,15 @@ def max_palindrome(num_size):
 def evenly_divisible_min_num(num_count):
     # 5-я задача:
     # Ищем самое маленькое число, которое делится без остатка на все числа заданного кол-ва
-    num_list = range(num_count, int(num_count / 2), -1)    # Можно взять только пол диапазона
+    num_list = range(num_count, int(num_count / 2), -1)  # Можно взять только пол диапазона
     prime_num_list = [x for x in num_list if is_prime_num(x)]  # Только простые числа
-    min_num = reduce(lambda a, b: a * b, prime_num_list)    # Их произведение
+    min_num = reduce(lambda a, b: a * b, prime_num_list)  # Их произведение
 
     b_found = False
-    while not b_found:          # Ищем то самое число
+    while not b_found:  # Ищем то самое число
         for i in num_list:
             if min_num % i:
-                min_num += 2    # Шаг тоже может быть кратен двум
+                min_num += 2  # Шаг тоже может быть кратен двум
                 break
         else:
             b_found = True
@@ -94,7 +94,7 @@ def sum_square_difference(num_count):
     # и квадратом суммы певых натуральных чисел заданного кол-ва.
     num_list = range(num_count + 1)
     num_sum_square = sum([num for num in num_list])
-    num_square_sum = sum([num*num for num in num_list])
+    num_square_sum = sum([num * num for num in num_list])
     sum_square_diff = num_sum_square * num_sum_square - num_square_sum
     return sum_square_diff
 
@@ -107,9 +107,8 @@ def prime_num(num_idx):
         if is_prime_num(i):
             idx += 1
             if idx == num_idx:
-                num = i
-                break
-    return num
+                return i
+    return 0
 
 
 def max_series_product(s_product, num_count):
@@ -120,31 +119,61 @@ def max_series_product(s_product, num_count):
     zero_idx = s_product.find('0', i)
     while zero_idx > 0:
         dict_elem = s_product[i:zero_idx]
-        if len(dict_elem) >= num_count:         # пропускаем элементы с кол-вом меньше заданного
+        if len(dict_elem) >= num_count:  # пропускаем элементы с кол-вом меньше заданного
             p_product = reduce(lambda a, b: int(a) * int(b), s_product[i:num_count])
-            if p_product > i_max_product:       # если нашли элементы с бОльшим произведением
+            if p_product > i_max_product:  # если нашли элементы с бОльшим произведением
                 i_max_product = p_product
             s_product = s_product[1:len(s_product)]
         else:
             s_product = s_product[zero_idx + 1:len(s_product)]
-        while not s_product.find('0'):          # удаляем лидирующие нули
+        while not s_product.find('0'):  # удаляем лидирующие нули
             s_product = s_product[1:len(s_product)]
         zero_idx = s_product.find('0', i)
     return i_max_product
 
 
-def pythagorean_triplet(sum_num):
-    # 8-я задача:
+def isint(s):
+    # проверяем число на целочисленность
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+
+def pythagorean_triplet_reduce(sum_num):
+    # 9-я задача:
     # Находит произведение тройки Пифагора, для которой сумма равна заданному числу
-    l_triplet = []
-    uni_triplet = range(3, 6)    # 3, 4, 5
-    uni_triplet_sum = sum(uni_triplet)
-    if not (sum_num % uni_triplet_sum):     # проверка на однородность
-        k = int(sum_num / uni_triplet_sum)
-        l_triplet = [x * k for x in uni_triplet]
-    else:
-        pass
-    triplet_product = reduce(lambda a, b: a * b, l_triplet)
+    i = 2
+    while True:
+        # находим пару чисел [m, n] для генерации троек
+        m = i
+        n = (sum_num - 2 * m ** 2) / (2 * m)
+        i = i + 1
+        if (m > n) and (n > 0) and isint(n):
+            # вычисляем Пифагорову тройку
+            a = m ** 2 - n ** 2
+            b = 2 * m * n
+            c = m ** 2 + n ** 2
+            # проверяем тройку на соответствие исходной суммы
+            if sum_num == a + b + c:
+                break
+    # вычисляем ей произведение
+    triplet_product = a * b * c
     return triplet_product
 
 
+def prime_nums_sum(max_num):
+    # 10-я задача:
+    # Находит сумму всех простых чисел меньше до указанного числа.
+    start_sum = 2 + 3 + 5 + 7 + 11 + 13
+    num_list = range(17, max_num)
+    num_sum = start_sum + sum([num for num in num_list if num % 2 != 0 if is_prime_num(num)])
+    return num_sum
+
+def matrix_max_product(a_matrix):
+    # 11-я задача:
+    # Найти наибольшее произведение 4-х подряд идущих чисел в матрице
+    # направления: вверх, вниз, вправо, влево или по диагонали
+    print a_matrix
+    return 0
