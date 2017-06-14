@@ -166,10 +166,11 @@ def pythagorean_triplet_reduce(sum_num):
 def prime_nums_sum(max_num):
     # 10-я задача:
     # Находит сумму всех простых чисел меньше до указанного числа.
-    start_sum = 2 + 3 + 5 + 7 + 11 + 13
+    start_sum = sum(2, 3, 5, 7, 11, 13)
     num_list = range(17, max_num)
     num_sum = start_sum + sum([num for num in num_list if num % 2 != 0 if is_prime_num(num)])
     return num_sum
+
 
 def matrix_max_product(a_matrix):
     # 11-я задача:
