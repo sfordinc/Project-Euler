@@ -11,8 +11,8 @@ def main():
     gc.enable()
     start = time.time()
 
-    num = 2000000
-    print euler.prime_nums_sum(num)
+    num = 12
+    print euler.pythagorean_triplet_reduce(num)
 
     print time.time() - start
     gc.collect()
