@@ -23,3 +23,7 @@ math, time, gc
 7 - prime_num;
 
 8 - max_series_product;
+
+9 - pythagorean_triplet_reduce;
+
+10 - prime_nums_sum;
