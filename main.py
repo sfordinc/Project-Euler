@@ -1,4 +1,7 @@
 # coding=utf-8
+"""
+base module of project euler
+"""
 
 import gc
 import time
@@ -8,11 +11,15 @@ __author__ = 'sford'
 
 
 def main():
+    """
+    execute one function of euler module
+    :return: None
+    """
     gc.enable()
     start = time.time()
 
-    num = 12
-    print euler.pythagorean_triplet_reduce(num)
+    num = 600851475143
+    print euler.max_prime_factor(num)
 
     print time.time() - start
     gc.collect()
